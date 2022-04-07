@@ -14,6 +14,9 @@ public class Hand : MonoBehaviour
     float gripCurrent;
     float triggerCurrent;
 
+    float axisClickTarget;
+    float axisClickCurrent;
+
     public float speed;
 
     void Start()
@@ -30,6 +33,11 @@ public class Hand : MonoBehaviour
     internal void SetGrip(float v)
     {
         gripTarget = v;
+    }
+
+    internal void SetAxisTrigger(float v)
+    {
+        axisClickTarget = v;
     }
 
     internal void SetTrigger(float v)
@@ -49,6 +57,12 @@ public class Hand : MonoBehaviour
         {
             triggerCurrent = Mathf.MoveTowards(triggerCurrent, triggerTarget, Time.deltaTime * speed);
             animator.SetFloat("Trigger", triggerCurrent);
+        }
+
+        if (axisClickCurrent != axisClickTarget)
+        {
+            axisClickCurrent = Mathf.MoveTowards(axisClickCurrent, axisClickTarget, Time.deltaTime * speed);
+            animator.SetFloat("Prueba", axisClickCurrent);
         }
     }
 
