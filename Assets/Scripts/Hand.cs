@@ -62,12 +62,12 @@ public class Hand : MonoBehaviour
         if (axisClickCurrent != axisClickTarget)
         {
             axisClickCurrent = Mathf.MoveTowards(axisClickCurrent, axisClickTarget, Time.deltaTime * speed);
-            animator.SetFloat("Prueba", axisClickCurrent);
+            animator.SetFloat("PrimaryAxisClick", axisClickCurrent);
         }
     }
 
-    public void ToggleVisibilty()
-    {
-        mesh.enabled = !mesh.enabled;
-    }
+    //public void ToggleVisibilty()
+    //{
+    //    mesh.enabled = !mesh.enabled;
+    //}
 }

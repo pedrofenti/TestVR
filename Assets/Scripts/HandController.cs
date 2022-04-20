@@ -18,6 +18,6 @@ public class HandController : MonoBehaviour
     {
         hand.SetGrip(controller.selectAction.action.ReadValue<float>());
         hand.SetTrigger(controller.activateAction.action.ReadValue<float>());
-        hand.SetAxisTrigger(controller.activateAction.action.ReadValue<float>());
+        hand.SetAxisTrigger(controller.uiPressAction.action.ReadValue<float>());
     }
 }

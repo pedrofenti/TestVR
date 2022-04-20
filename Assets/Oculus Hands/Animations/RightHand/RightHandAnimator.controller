@@ -64,7 +64,7 @@ BlendTree:
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
-    m_DirectBlendParameter: Prueba
+    m_DirectBlendParameter: PrimaryAxisClick
     m_Mirror: 0
   m_BlendParameter: Blend
   m_BlendParameterY: Blend
@@ -82,7 +82,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: Prueba
+    m_ConditionEvent: PrimaryAxisClick
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -392026663936879247}
@@ -227,7 +227,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Prueba
+  - m_Name: PrimaryAxisClick
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -497,7 +497,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: Prueba
+    m_ConditionEvent: PrimaryAxisClick
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4517062957208666604}
