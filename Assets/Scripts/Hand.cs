@@ -66,8 +66,8 @@ public class Hand : MonoBehaviour
         }
     }
 
-    //public void ToggleVisibilty()
-    //{
-    //    mesh.enabled = !mesh.enabled;
-    //}
+    public void ToggleVisibilty()
+    {
+        mesh.enabled = !mesh.enabled;
+    }
 }

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LayerNames:
   - Default
-  - 
-  - 
-  - 
-  - 
+  - PrimaryFood
+  - FryFood
+  - BoiledFood
+  - FinalFood
   - 
   - 
   - 

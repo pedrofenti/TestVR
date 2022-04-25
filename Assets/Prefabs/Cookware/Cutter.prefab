@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 543450651944972797}
   - component: {fileID: 3469287837875928664}
   - component: {fileID: 1711813855224367762}
+  - component: {fileID: 4850058897905532139}
   m_Layer: 0
   m_Name: cookingKnife
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147687762759}
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
-  m_LocalPosition: {x: -0.01, y: 0.125, z: -0.03}
+  m_LocalPosition: {x: -0.0064, y: 0.1405, z: -0.0233}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 6273747608107324459}
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4850058897905532139
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147687762759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7262501, y: 0.020000178, z: 0.12748812}
+  m_Center: {x: -0.000000002384186, y: 0.010000003, z: 0}
 --- !u!1 &6273747608107324456
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +111,7 @@ GameObject:
   - component: {fileID: 7903729445650837604}
   m_Layer: 0
   m_Name: Cutter
-  m_TagString: Untagged
+  m_TagString: Knife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,6 +128,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543450651944972797}
+  - {fileID: 7182896532818682876}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -125,7 +140,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6273747608107324456}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.45, z: 0.1}
@@ -224,8 +239,8 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
-  m_AttachEaseInTime: 1
+  m_AttachTransform: {fileID: 7182896532818682876}
+  m_AttachEaseInTime: 1.5
   m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -261,3 +276,33 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!1 &7134584854705058583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7182896532818682876}
+  m_Layer: 0
+  m_Name: CutterSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7182896532818682876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134584854705058583}
+  m_LocalRotation: {x: -0, y: 0.7933535, z: 0.6087613, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6273747608107324459}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -75, y: 180, z: 0}
