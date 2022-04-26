@@ -3,37 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PrimaryFoodController : MonoBehaviour
+public class FryFoodController : MonoBehaviour
 {
     [SerializeField]
     private GameObject finalFood;
     [SerializeField]
-    private GameObject foodCanvas;
+    public GameObject foodCanvas;
     [SerializeField]
-    private Slider slider;
+    public Slider slider;
     [SerializeField]
     private float speed;
 
-    private bool isCutting;
-    private bool isOnCuttingBoard;
+    private FryingPanController fryingPan;
 
+    private bool isFrying;
+
+    private void Awake()
+    {
+        fryingPan = GameObject.FindGameObjectWithTag("KitchenStove").GetComponent<FryingPanController>();
+    }
     // Start is called before the first frame update
     void Start()
     {
         foodCanvas.SetActive(false);
-        isCutting = false;
-        isOnCuttingBoard = false;
+        isFrying = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isOnCuttingBoard) CheckIfCutting();
+        CheckIfFrying();
     }
 
-    private void CheckIfCutting()
+    private void CheckIfFrying()
     {
-        if (isCutting)
+        if (isFrying && fryingPan.getFrying())
         {
             foodCanvas.SetActive(true);
             slider.value += Time.deltaTime * speed;
@@ -59,35 +63,17 @@ public class PrimaryFoodController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        switch (other.gameObject.tag)
+        if (other.gameObject.tag == "FryingPan")
         {
-            default:
-                break;
-
-            case "CuttingBoard":
-                isOnCuttingBoard = true;
-                break;
-
-            case "Knife":
-                isCutting = true;
-                break;
+            isFrying = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        switch (other.gameObject.tag)
+        if (other.gameObject.tag == "FryingPan")
         {
-            default:
-                break;
-
-            case "CuttingBoard":
-                isOnCuttingBoard = false;
-                break;
-
-            case "Knife":
-                isCutting = false;
-                break;
+            isFrying = false;
         }
     }
 }

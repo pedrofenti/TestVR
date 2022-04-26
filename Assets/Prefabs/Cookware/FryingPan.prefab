@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.29481852, y: 0.0563975, z: 0.29084525}
-  m_Center: {x: -0.00021290779, y: -0.009167494, z: -0.27398044}
+  m_Size: {x: 0.29481852, y: 0.019133413, z: 0.29084527}
+  m_Center: {x: -0.00021290779, y: -0.02779954, z: -0.27398044}
 --- !u!65 &751961806639833476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 36
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -217,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743812178878030064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0.075, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 575535395545682831}
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 3174991216470157740}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: FryingPan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 4
+    m_Bits: 20
   m_AttachTransform: {fileID: 185991613093690540}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}

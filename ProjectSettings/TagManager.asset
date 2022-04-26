@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Knife
+  - Food
+  - CuttingBoard
+  - Plate
+  - FryingPan
+  - Pot
+  - KitchenStove
   layers:
   - Default
   - TransparentFX
