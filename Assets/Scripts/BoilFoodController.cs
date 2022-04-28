@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FryFoodController : MonoBehaviour
+public class BoilFoodController : MonoBehaviour
 {
     [SerializeField]
     private GameObject finalFood;
@@ -14,30 +14,30 @@ public class FryFoodController : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    private FryingPanController fryingPan;
+    private PotController potController;
 
-    private bool isFrying;
+    private bool isBoiling;
 
     private void Awake()
     {
-        fryingPan = GameObject.FindGameObjectWithTag("FryKitchenStove").GetComponent<FryingPanController>();
+        potController = GameObject.FindGameObjectWithTag("BoilKitchenStove").GetComponent<PotController>();
     }
     // Start is called before the first frame update
     void Start()
     {
         foodCanvas.SetActive(false);
-        isFrying = false;
+        isBoiling = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckIfFrying();
+        CheckIfBoiling();
     }
 
-    private void CheckIfFrying()
+    private void CheckIfBoiling()
     {
-        if (isFrying && fryingPan.getFrying())
+        if (isBoiling && potController.getBoiling())
         {
             foodCanvas.SetActive(true);
             slider.value += Time.deltaTime * speed;
@@ -63,17 +63,17 @@ public class FryFoodController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "FryingPan")
+        if (other.gameObject.tag == "Pot")
         {
-            isFrying = true;
+            isBoiling = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "FryingPan")
+        if (other.gameObject.tag == "Pot")
         {
-            isFrying = false;
+            isBoiling = false;
         }
     }
 }

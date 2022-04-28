@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 421520544428032571}
   m_Layer: 0
   m_Name: Pot
-  m_TagString: Pot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,6 @@ Transform:
   m_Children:
   - {fileID: 5477231737900707921}
   - {fileID: 9168144280489621575}
-  - {fileID: 3413172813419203860}
   - {fileID: 369041344073235280}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.18, z: 0.3}
-  m_Center: {x: 0, y: 0.09, z: 0}
+  m_Size: {x: 0.3, y: 0.12662242, z: 0.3}
+  m_Center: {x: 0, y: 0.06331121, z: 0}
 --- !u!54 &421520544428032564
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9168144280489621575}
   m_Layer: 0
-  m_Name: Socket01
+  m_Name: Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,13 +203,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3592709950924436917}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1618, z: -0.191}
+  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalPosition: {x: -0, y: 0.0106, z: -0.0161}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 421520544428032566}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &4134042622845784658
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4134042622845784658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5477231737900707921}
@@ -256,7 +255,7 @@ GameObject:
   - component: {fileID: 5152912346674471592}
   m_Layer: 0
   m_Name: Pot
-  m_TagString: Untagged
+  m_TagString: Pot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -392,36 +391,6 @@ MonoBehaviour:
   m_SocketActive: 1
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
---- !u!1 &7176434526712110300
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3413172813419203860}
-  m_Layer: 0
-  m_Name: Socket02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3413172813419203860
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7176434526712110300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1618, z: 0.1827}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 421520544428032566}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7263285943342543767
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +402,6 @@ GameObject:
   - component: {fileID: 369041344073235280}
   - component: {fileID: 3108022575417716072}
   - component: {fileID: 4936258869153914610}
-  - component: {fileID: 1990400141008322007}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -453,7 +421,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.05, z: 0.3}
   m_Children: []
   m_Father: {fileID: 421520544428032566}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3108022575417716072
 MeshFilter:
@@ -504,16 +472,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1990400141008322007
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7263285943342543767}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

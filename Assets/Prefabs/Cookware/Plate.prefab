@@ -76,8 +76,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.05, z: 0.25}
-  m_Center: {x: 0, y: 0.025, z: -0.12}
+  m_Size: {x: 0.25, y: 0.011984238, z: 0.25}
+  m_Center: {x: 0, y: 0.005992119, z: -0.120000005}
 --- !u!54 &3635723509146004651
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 6773567544989128819}
   - component: {fileID: 1721736320619667278}
   - component: {fileID: 5181374392677269196}
+  - component: {fileID: 1020002225471548997}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Plate
@@ -334,8 +335,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.44588697
-  m_Center: {x: 0, y: 0.044999994, z: 0}
+  m_Radius: 0.45
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!114 &5181374392677269196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,3 +390,15 @@ MonoBehaviour:
   m_SocketActive: 1
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1
+--- !u!114 &1020002225471548997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4972105635330963878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2321f8db69988d6499429730eb019f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

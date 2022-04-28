@@ -308,7 +308,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 5835190002790702920}
   slider: {fileID: 4000524880965049258}
-  speed: 0.5
+  speed: 0.4
 --- !u!1001 &1715321942775018695
 PrefabInstance:
   m_ObjectHideFlags: 0

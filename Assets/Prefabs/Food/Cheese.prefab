@@ -249,7 +249,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &2218553328806388762
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +891,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &2830867734198836224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1141,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &3058048241820398585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1391,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &3734151865766931300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,7 +1641,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &4442879275460218830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,7 +1891,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &5487427015866226918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2141,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &6605764378630893850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2391,7 +2391,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &7415355005284626081
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,7 +2641,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &7964066569612212859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,7 +2891,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &8581799076633057749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3183,7 +3183,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &8984805802034663330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,7 +3433,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 7611597218237693897}
   slider: {fileID: 1071761179466021675}
-  speed: 0.35
+  speed: 0.6
 --- !u!1001 &3356621033537868870
 PrefabInstance:
   m_ObjectHideFlags: 0

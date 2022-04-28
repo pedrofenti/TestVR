@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 9139953778393900824}
   - component: {fileID: 5599509236893599636}
   m_Layer: 0
-  m_Name: KitchenStove
-  m_TagString: KitchenStove
+  m_Name: FryKitchenStove
+  m_TagString: FryKitchenStove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

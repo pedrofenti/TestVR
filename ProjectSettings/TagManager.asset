@@ -10,7 +10,23 @@ TagManager:
   - Plate
   - FryingPan
   - Pot
-  - KitchenStove
+  - FryKitchenStove
+  - BoilKitchenStove
+  - BottleKetchup
+  - BottleMustard
+  - Burguer
+  - BurguerCheese
+  - BurguerCheeseTomato
+  - BurguerBread
+  - CheeseCut
+  - HotDogBread
+  - Lettuce
+  - Loaf
+  - PattyMeat
+  - RiceBall
+  - Salmon
+  - SausageMeat
+  - TomatoSlice
   layers:
   - Default
   - TransparentFX

@@ -198,7 +198,7 @@ MonoBehaviour:
     type: 3}
   foodCanvas: {fileID: 5167453079372452754}
   slider: {fileID: 2362139620691859312}
-  speed: 0.35
+  speed: 0.6
 --- !u!1 &1608219934013715765
 GameObject:
   m_ObjectHideFlags: 0

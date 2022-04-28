@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5468907026366366803}
   m_Layer: 0
   m_Name: BottleKetchup
-  m_TagString: Untagged
+  m_TagString: BottleKetchup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
