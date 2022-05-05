@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class RecipeController : MonoBehaviour
 {
-    private enum INGREDIENTS { NONE, BURGUERBREAD, BURGUER, BURGUERCHEESE, BURGUERCHEESETOMATO, CHEESECUT, LETTUCE, PATTYMEAT, TOMATOSLICE, HOTDOGBREAD, SAUSAGEMEAT, BOTTLEKETCHUP, BOTTLEMUSTARD, RICEBALL, SALMON };
+    public enum INGREDIENTS { NONE, BURGUERBREAD, BURGUER, BURGUERCHEESE, BURGUERCHEESETOMATO, CHEESECUT, LETTUCE, PATTYMEAT, TOMATOSLICE, HOTDOGBREAD, SAUSAGEMEAT, BOTTLEKETCHUP, BOTTLEMUSTARD, RICEBALL, SALMON };
 
-    private List<INGREDIENTS> recipe;
+    public List<INGREDIENTS> recipe;
+    public List<GameObject> objectsRecipe;
     private INGREDIENTS lastIngredient;
 
     private bool isBurguer;
@@ -14,20 +15,41 @@ public class RecipeController : MonoBehaviour
     private bool isSushi;
     private bool isPizza;
 
+    private bool isColliding;
+    private bool isTried;
+
     // Start is called before the first frame update
     void Start()
     {
+        objectsRecipe = new List<GameObject>();
         recipe = new List<INGREDIENTS>();
         recipe.Add(INGREDIENTS.NONE);
         lastIngredient = recipe[0];
         ResetBools();
+
+        isColliding = false;
+        isTried = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         GetRecipe();
+
+        if (isColliding && !isTried)
+        {
+            isTried = true;
+            StartCoroutine(SetIsColliding());
+        }
     }
+
+    IEnumerator SetIsColliding()
+    {
+        yield return new WaitForSeconds(1f);
+        isColliding = false;
+        isTried = false;
+    }
+
 
     private void GetRecipe()
     {
@@ -156,103 +178,300 @@ public class RecipeController : MonoBehaviour
             }
         }
 
+        if (burguerBread && pattyMeat && cheeseCut)
+        {
+            foreach (var item in objectsRecipe)
+            {
+                Destroy(item);
+            }
+            objectsRecipe.Clear();
+
+            Object p = Resources.Load("BurgerCheese Variant");
+            Instantiate(p, transform.position, transform.rotation);
+
+            objectsRecipe.Add((GameObject)p);
+        }
+
+        if (burguerBread && pattyMeat)
+        {
+            foreach (var item in objectsRecipe)
+            {
+                Destroy(item);
+            }
+            objectsRecipe.Clear();
+
+            Object p = Resources.Load("Burger Variant");
+            Instantiate(p, transform.position, transform.rotation);
+
+            objectsRecipe.Add((GameObject)p);
+        }
+
         // Comprobar que Ingredientes estan (son true) y hacer las combinaciones instaciando las fusiones
 
     }
 
+    private void AddToObjectRecipe(GameObject other)
+    {
+        GameObject tmp = other;
+        objectsRecipe.Add(tmp);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
-
-        switch (other.gameObject.tag)
+        if (!isColliding)
         {
-            default:
-                break;
+            switch (other.gameObject.tag)
+            {
+                default:
+                    break;
 
-            // Burguer
-            case "BurguerBread":
-                if (!CheckIngredient(INGREDIENTS.BURGUERBREAD))
-                {
-                    // No esta este ingrediente en el plato
-                    // Compruebo que no se esta haciendo otra receta
-                    if (!isHotDog && !isPizza && !isSushi)
+                // Burguer
+                case "BurguerBread":
+                    if (!CheckIngredient(INGREDIENTS.BURGUERBREAD))
                     {
-                        // Lo añado al array
-                        if (CheckFirstIngredientIsNotNONE())
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
                         {
-                            recipe[0] = INGREDIENTS.BURGUERBREAD;
-                        }
-                        else
-                        {
-                            // Hacer la combinacion de ingredientes
-                            MakeBurguer(INGREDIENTS.BURGUERBREAD);
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BURGUERBREAD;
+                                AddToObjectRecipe(other.gameObject);
 
-                            
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.BURGUERBREAD);
+                            }
+                            isColliding = true;
                         }
+                        break;
+                    }
+                    else
+                    {
+                        isColliding = false;
                     }
                     break;
-                }
 
-                // Ya Esta el ingrediente en el plato
-                Debug.Log("Ya esta en el plato");
-                break;
-                
-            case "Burguer":
+                case "Burguer":
+                    if (!CheckIngredient(INGREDIENTS.BURGUER))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BURGUER;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.BURGUER);
+                            }
+                        }
+                        break;
+                    }
+                    break;
 
-                break;
-            case "BurguerCheese":
+                case "BurguerCheese":
+                    if (!CheckIngredient(INGREDIENTS.BURGUERCHEESE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BURGUERCHEESE;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.BURGUERCHEESE);
+                            }
+                        }
+                        break;
+                    }
+                    break;
 
-                break;
-            case "BurguerCheeseTomtato":
+                case "BurguerCheeseTomtato":
+                    if (!CheckIngredient(INGREDIENTS.BURGUERCHEESETOMATO))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BURGUERCHEESETOMATO;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.BURGUERCHEESETOMATO);
+                            }
+                        }
+                        break;
+                    }
+                    break;
 
-                break;
-            case "CheeseCut":
+                case "CheeseCut":
+                    if (!CheckIngredient(INGREDIENTS.CHEESECUT))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.CHEESECUT;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.CHEESECUT);
+                            }
+                            isColliding = true;
+                        }
+                        break;
+                    }
+                    break;
 
-                break;
-            case "Lettuce":
+                case "Lettuce":
+                    if (!CheckIngredient(INGREDIENTS.LETTUCE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.LETTUCE;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.LETTUCE);
+                            }
+                        }
+                        break;
+                    }
+                    break;
 
-                break;
-            case "PattyMeat":
+                case "PattyMeat":
+                    if (!CheckIngredient(INGREDIENTS.PATTYMEAT))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.PATTYMEAT;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.PATTYMEAT);
+                            }
+                            isColliding = true;
+                        }
+                        break;
+                    }
+                    break;
 
-                break;
-            case "TomatoSlice":
+                case "TomatoSlice":
+                    if (!CheckIngredient(INGREDIENTS.TOMATOSLICE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.TOMATOSLICE;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.TOMATOSLICE);
+                            }
+                        }
+                        break;
+                    }
+                    break;
 
-                break;
 
-            // HotDog
-            case "HotDogBread":
+                // HotDog
+                case "HotDogBread":
 
-                break;
-            case "SausageMeat":
+                    break;
+                case "SausageMeat":
 
-                break;
-            case "BottleKetchup":
+                    break;
+                case "BottleKetchup":
 
-                break;
-            case "BottleMustard":
+                    break;
+                case "BottleMustard":
 
-                break;
+                    break;
 
-            // Sushi
-            case "RiceBall":
+                // Sushi
+                case "RiceBall":
 
-                break;
-            case "Salmon":
+                    break;
+                case "Salmon":
 
-                break;
+                    break;
 
-            // Pizza
+                    // Pizza
 
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        ResetBools();
+        switch (other.gameObject.tag)
+        {
+
+        }
+
+        //ResetBools();
+
+        Debug.Log("ha salido " + other.gameObject.tag + " del plato");
     }
 
     private void ResetBools()
     {
+        recipe[0] = INGREDIENTS.NONE;
+        lastIngredient = recipe[0];
+
         isBurguer = false;
         isHotDog = false;
         isSushi = false;

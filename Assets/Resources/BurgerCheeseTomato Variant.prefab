@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3773773661044073657
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 985849399, guid: 242855f7b7f948540bb43e931f607f77, type: 3}
+      propertyPath: m_Size.y
+      value: 0.24394393
+      objectReference: {fileID: 0}
+    - target: {fileID: 985849399, guid: 242855f7b7f948540bb43e931f607f77, type: 3}
+      propertyPath: m_Center.y
+      value: 0.12302804
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5759115
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.6743581
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230877317886359469, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 612468787953790231, guid: 242855f7b7f948540bb43e931f607f77,
+        type: 3}
+      propertyPath: m_Name
+      value: BurgerCheeseTomato Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 242855f7b7f948540bb43e931f607f77, type: 3}
