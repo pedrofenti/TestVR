@@ -402,3 +402,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2321f8db69988d6499429730eb019f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipe: 
+  objectsRecipe: []
+  Ingredients:
+  - {fileID: 0}
+  - {fileID: 1342711782352940106, guid: 8887fea1361d0a142b36078963bf1368, type: 3}
+  - {fileID: 924651289367191073, guid: 489cad0f3aa055b48b0ead7db5605dcc, type: 3}
+  - {fileID: 5037243149144735889, guid: b338ccad9b2a61f43a41d191a87fc07f, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  isBurguer: 0
+  isHotDog: 0
+  isSushi: 0
+  isPizza: 0

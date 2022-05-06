@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class RecipeController : MonoBehaviour
 {
-    public enum INGREDIENTS { NONE, BURGUERBREAD, BURGUER, BURGUERCHEESE, BURGUERCHEESETOMATO, CHEESECUT, LETTUCE, PATTYMEAT, TOMATOSLICE, HOTDOGBREAD, SAUSAGEMEAT, BOTTLEKETCHUP, BOTTLEMUSTARD, RICEBALL, SALMON };
+    public enum INGREDIENTS { NONE, BURGUERBREAD, BURGUERBREADCHEESE, BURGUERBREADLETTUCE, BURGUERBREADTOMATO, BURGUER, 
+        BURGUERCHEESE, BURGUERTOMATO, BURGUERLETTUCE,
+        BURGUERCHEESETOMATO, BURGUERCHEESELETTUCE, BURGUERLETTUCETOMATO,
+        BURGUERBREADCHEESETOMATO, BURGUERBREADCHEESELETTUCE, BURGUERBREADLETTUCETOMATO, BURGUERVEGETAL,
+        BURGUERWITHALL,
+        CHEESECUT, LETTUCE, PATTYMEAT, TOMATOSLICE, 
+
+        HOTDOGBREAD, SAUSAGEMEAT, BOTTLEKETCHUP, BOTTLEMUSTARD, RICEBALL, SALMON };
 
     public List<INGREDIENTS> recipe;
     public List<GameObject> objectsRecipe;
+    [SerializeField] List<GameObject> Ingredients;
     private INGREDIENTS lastIngredient;
 
-    private bool isBurguer;
-    private bool isHotDog;
-    private bool isSushi;
-    private bool isPizza;
+    public bool isBurguer;
+    public bool isHotDog;
+    public bool isSushi;
+    public bool isPizza;
 
     private bool isColliding;
     private bool isTried;
+    private bool anIngredientIsIn;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +38,7 @@ public class RecipeController : MonoBehaviour
 
         isColliding = false;
         isTried = false;
+        anIngredientIsIn = true;
     }
 
     // Update is called once per frame
@@ -49,7 +59,6 @@ public class RecipeController : MonoBehaviour
         isColliding = false;
         isTried = false;
     }
-
 
     private void GetRecipe()
     {
@@ -86,6 +95,15 @@ public class RecipeController : MonoBehaviour
                     IsBurguer();
                     break;
                 case INGREDIENTS.TOMATOSLICE:
+                    IsBurguer();
+                    break;
+                case INGREDIENTS.BURGUERBREADCHEESE:
+                    IsBurguer();
+                    break;
+                case INGREDIENTS.BURGUERBREADLETTUCE:
+                    IsBurguer();
+                    break;
+                case INGREDIENTS.BURGUERBREADTOMATO:
                     IsBurguer();
                     break;
 
@@ -137,14 +155,17 @@ public class RecipeController : MonoBehaviour
     {
         recipe.Add(newIngredient);
 
-        bool burguer = false;
         bool burguerBread = false;
-        bool burguerCheese = false;
-        bool burguerCheeseTomato = false;
         bool pattyMeat = false;
         bool cheeseCut = false;
         bool lettuce = false;
         bool tomateSlice = false;
+        bool burguerBreadCheese = false;
+        bool burguerBreadLettuce = false;
+        bool burguerBreadTomato = false;
+        bool burguer = false;
+        bool burguerCheese = false;
+        bool burguerCheeseTomato = false;
 
         foreach (var item in recipe)
         {
@@ -174,40 +195,130 @@ public class RecipeController : MonoBehaviour
                 case INGREDIENTS.TOMATOSLICE:
                     tomateSlice = true;
                     break;
-
+                case INGREDIENTS.BURGUERBREADCHEESE:
+                    burguerBreadCheese = true;
+                    break;
+                case INGREDIENTS.BURGUERBREADLETTUCE:
+                    burguerBreadLettuce = true;
+                    break;
+                case INGREDIENTS.BURGUERBREADTOMATO:
+                    burguerBreadTomato = true;
+                    break;
             }
-        }
-
-        if (burguerBread && pattyMeat && cheeseCut)
-        {
-            foreach (var item in objectsRecipe)
-            {
-                Destroy(item);
-            }
-            objectsRecipe.Clear();
-
-            Object p = Resources.Load("BurgerCheese Variant");
-            Instantiate(p, transform.position, transform.rotation);
-
-            objectsRecipe.Add((GameObject)p);
-        }
-
-        if (burguerBread && pattyMeat)
-        {
-            foreach (var item in objectsRecipe)
-            {
-                Destroy(item);
-            }
-            objectsRecipe.Clear();
-
-            Object p = Resources.Load("Burger Variant");
-            Instantiate(p, transform.position, transform.rotation);
-
-            objectsRecipe.Add((GameObject)p);
         }
 
         // Comprobar que Ingredientes estan (son true) y hacer las combinaciones instaciando las fusiones
+        if (burguerBread)
+        {
+            if (pattyMeat)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
 
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.BURGUER], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.BURGUER);
+            }
+
+            if (cheeseCut)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.BURGUERBREADCHEESE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.BURGUERBREADCHEESE);
+            }
+
+            if (lettuce)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.BURGUERBREADLETTUCE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.BURGUERBREADLETTUCE);
+            }
+
+            if (tomateSlice)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.BURGUERBREADTOMATO], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.BURGUERBREADTOMATO);
+            }
+        }
+
+        if (burguerBreadCheese)
+        {
+            if (pattyMeat)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.BURGUERCHEESE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.BURGUERCHEESE);
+            }
+
+            if (tomateSlice)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.BURGUERCHEESETOMATO], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.TOMATOSLICE);
+            }
+
+            if (lettuce)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.BURGUERCHEESELETTUCE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.BURGUERCHEESELETTUCE);
+            }
+        }
+
+
+    }
+
+    private void UpdateRecipe(INGREDIENTS ingredient)
+    {
+        recipe.Clear();
+        recipe.Add(ingredient);
     }
 
     private void AddToObjectRecipe(GameObject other)
@@ -238,7 +349,6 @@ public class RecipeController : MonoBehaviour
                             {
                                 recipe[0] = INGREDIENTS.BURGUERBREAD;
                                 AddToObjectRecipe(other.gameObject);
-
                             }
                             else
                             {
@@ -254,6 +364,7 @@ public class RecipeController : MonoBehaviour
                     {
                         isColliding = false;
                     }
+                    anIngredientIsIn = true;
                     break;
 
                 case "Burguer":
@@ -268,6 +379,7 @@ public class RecipeController : MonoBehaviour
                             {
                                 recipe[0] = INGREDIENTS.BURGUER;
                                 AddToObjectRecipe(other.gameObject);
+
                             }
                             else
                             {
@@ -275,9 +387,15 @@ public class RecipeController : MonoBehaviour
                                 AddToObjectRecipe(other.gameObject);
                                 MakeBurguer(INGREDIENTS.BURGUER);
                             }
+                            isColliding = true;
                         }
                         break;
                     }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
 
                 case "BurguerCheese":
@@ -292,6 +410,7 @@ public class RecipeController : MonoBehaviour
                             {
                                 recipe[0] = INGREDIENTS.BURGUERCHEESE;
                                 AddToObjectRecipe(other.gameObject);
+
                             }
                             else
                             {
@@ -299,8 +418,13 @@ public class RecipeController : MonoBehaviour
                                 AddToObjectRecipe(other.gameObject);
                                 MakeBurguer(INGREDIENTS.BURGUERCHEESE);
                             }
+                            isColliding = true;
                         }
                         break;
+                    }
+                    else
+                    {
+                        isColliding = false;
                     }
                     break;
 
@@ -316,6 +440,7 @@ public class RecipeController : MonoBehaviour
                             {
                                 recipe[0] = INGREDIENTS.BURGUERCHEESETOMATO;
                                 AddToObjectRecipe(other.gameObject);
+
                             }
                             else
                             {
@@ -323,9 +448,15 @@ public class RecipeController : MonoBehaviour
                                 AddToObjectRecipe(other.gameObject);
                                 MakeBurguer(INGREDIENTS.BURGUERCHEESETOMATO);
                             }
+                            isColliding = true;
                         }
                         break;
                     }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
 
                 case "CheeseCut":
@@ -340,6 +471,7 @@ public class RecipeController : MonoBehaviour
                             {
                                 recipe[0] = INGREDIENTS.CHEESECUT;
                                 AddToObjectRecipe(other.gameObject);
+
                             }
                             else
                             {
@@ -351,6 +483,11 @@ public class RecipeController : MonoBehaviour
                         }
                         break;
                     }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
 
                 case "Lettuce":
@@ -365,6 +502,7 @@ public class RecipeController : MonoBehaviour
                             {
                                 recipe[0] = INGREDIENTS.LETTUCE;
                                 AddToObjectRecipe(other.gameObject);
+
                             }
                             else
                             {
@@ -372,9 +510,15 @@ public class RecipeController : MonoBehaviour
                                 AddToObjectRecipe(other.gameObject);
                                 MakeBurguer(INGREDIENTS.LETTUCE);
                             }
+                            isColliding = true;
                         }
                         break;
                     }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
 
                 case "PattyMeat":
@@ -389,6 +533,7 @@ public class RecipeController : MonoBehaviour
                             {
                                 recipe[0] = INGREDIENTS.PATTYMEAT;
                                 AddToObjectRecipe(other.gameObject);
+
                             }
                             else
                             {
@@ -400,6 +545,11 @@ public class RecipeController : MonoBehaviour
                         }
                         break;
                     }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
 
                 case "TomatoSlice":
@@ -414,6 +564,7 @@ public class RecipeController : MonoBehaviour
                             {
                                 recipe[0] = INGREDIENTS.TOMATOSLICE;
                                 AddToObjectRecipe(other.gameObject);
+
                             }
                             else
                             {
@@ -421,9 +572,108 @@ public class RecipeController : MonoBehaviour
                                 AddToObjectRecipe(other.gameObject);
                                 MakeBurguer(INGREDIENTS.TOMATOSLICE);
                             }
+                            isColliding = true;
                         }
                         break;
                     }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "BurguerBreadTomato":
+                    if (!CheckIngredient(INGREDIENTS.BURGUERBREADTOMATO))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BURGUERBREADTOMATO;
+                                AddToObjectRecipe(other.gameObject);
+
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.BURGUERBREADTOMATO);
+                            }
+                            isColliding = true;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "BurguerBreadLettuce":
+                    if (!CheckIngredient(INGREDIENTS.BURGUERBREADLETTUCE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BURGUERBREADLETTUCE;
+                                AddToObjectRecipe(other.gameObject);
+
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.BURGUERBREADLETTUCE);
+                            }
+                            isColliding = true;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "BurguerBreadCheese":
+                    if (!CheckIngredient(INGREDIENTS.BURGUERBREADCHEESE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isHotDog && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BURGUERBREADCHEESE;
+                                AddToObjectRecipe(other.gameObject);
+
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeBurguer(INGREDIENTS.BURGUERBREADCHEESE);
+                            }
+                            isColliding = true;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
 
 
@@ -457,14 +707,69 @@ public class RecipeController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        switch (other.gameObject.tag)
+        if (!anIngredientIsIn)
         {
+            switch (other.gameObject.tag)
+            {
+                default:
+                    break;
 
+                // Burguer
+                case "BurguerBread":
+                    ResetBools();
+                    break;
+
+                case "Burguer":
+                    ResetBools();
+                    break;
+
+                case "BurguerCheese":
+                    ResetBools();
+                    break;
+
+                case "BurguerCheeseTomtato":
+                    ResetBools();
+                    break;
+
+                case "CheeseCut":
+                    ResetBools();
+                    break;
+
+                case "Lettuce":
+                    break;
+
+                case "PattyMeat":
+                    ResetBools();
+                    break;
+
+                case "TomatoSlice":
+                    break;
+
+                // HotDog
+                case "HotDogBread":
+                    break;
+
+                case "SausageMeat":
+                    break;
+
+                case "BottleKetchup":
+                    break;
+
+                case "BottleMustard":
+                    break;
+
+                // Sushi
+                case "RiceBall":
+                    break;
+
+                case "Salmon":
+                    break;
+
+                    // Pizza
+            }
+
+            Debug.Log("ha salido " + other.gameObject.tag + " del plato");
         }
-
-        //ResetBools();
-
-        Debug.Log("ha salido " + other.gameObject.tag + " del plato");
     }
 
     private void ResetBools()

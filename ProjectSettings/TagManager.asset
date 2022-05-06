@@ -27,6 +27,17 @@ TagManager:
   - Salmon
   - SausageMeat
   - TomatoSlice
+  - BurguerBreadTomato
+  - BurguerBreadCheese
+  - BurguerBreadLettuce
+  - BurguerCheeseLettuce
+  - BurguerLettuce
+  - BurguerTomato
+  - BurguerLettuceTomato
+  - BurguerBreadCheeseTomato
+  - BurguerBreadCheeseLettuce
+  - BurguerBreadLettuceTomato
+  - BurguerVegetal
   layers:
   - Default
   - TransparentFX
