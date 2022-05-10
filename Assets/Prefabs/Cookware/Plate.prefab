@@ -407,24 +407,21 @@ MonoBehaviour:
   Ingredients:
   - {fileID: 0}
   - {fileID: 1342711782352940106, guid: 8887fea1361d0a142b36078963bf1368, type: 3}
-  - {fileID: 924651289367191073, guid: 489cad0f3aa055b48b0ead7db5605dcc, type: 3}
   - {fileID: 5037243149144735889, guid: b338ccad9b2a61f43a41d191a87fc07f, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6683129795792359614, guid: 9679cabe8c1744f49ab349c4bc1a797f, type: 3}
+  - {fileID: 612468787953790231, guid: 47e788c29338e194c85650cdd3ee963d, type: 3}
+  - {fileID: 924651289367191073, guid: 489cad0f3aa055b48b0ead7db5605dcc, type: 3}
+  - {fileID: 5037243149144735889, guid: 2afef3b40b2d118489450bdf48385794, type: 3}
+  - {fileID: 6683129795792359614, guid: ff44f87423c30bb42aac827fb1dcb028, type: 3}
+  - {fileID: 6683129795792359614, guid: 3c132ba353c3d524ba31387df8b4cb8c, type: 3}
+  - {fileID: 612468787953790231, guid: 242855f7b7f948540bb43e931f607f77, type: 3}
+  - {fileID: 6683129795792359614, guid: 676b1f89ed184cb499120bf73d49f450, type: 3}
+  - {fileID: 6683129795792359614, guid: 507cc0aefe3c0a04bbcd92986a5c9b97, type: 3}
+  - {fileID: 6683129795792359614, guid: c5b526bc6e9188e4f9e2cd39cc7c6a2d, type: 3}
+  - {fileID: 6683129795792359614, guid: 0bf4ae3c51953104fa36056b136de1b0, type: 3}
+  - {fileID: 6683129795792359614, guid: 507cc0aefe3c0a04bbcd92986a5c9b97, type: 3}
+  - {fileID: 6683129795792359614, guid: aec31b489828cf44084c37c7d0861883, type: 3}
+  - {fileID: 6683129795792359614, guid: 588bc0237df5fc44193bdae3c19bfc16, type: 3}
   isBurguer: 0
   isHotDog: 0
   isSushi: 0

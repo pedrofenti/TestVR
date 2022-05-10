@@ -19,10 +19,13 @@ public class Hand : MonoBehaviour
 
     public float speed;
 
+    bool isGrabbing;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        isGrabbing = false;
     }
 
     void Update()
@@ -69,5 +72,20 @@ public class Hand : MonoBehaviour
     public void ToggleVisibilty()
     {
         mesh.enabled = !mesh.enabled;
+    }
+
+    public void ActiveGrabbedObject()
+    {
+        isGrabbing = true;
+    }
+
+    public void DeactivateGrabbedObject()
+    {
+        isGrabbing = false;
+    }
+
+    public bool GetIsGrabing()
+    {
+        return isGrabbing;
     }
 }

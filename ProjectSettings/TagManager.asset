@@ -38,6 +38,7 @@ TagManager:
   - BurguerBreadCheeseLettuce
   - BurguerBreadLettuceTomato
   - BurguerVegetal
+  - BurguerWithAll
   layers:
   - Default
   - TransparentFX
