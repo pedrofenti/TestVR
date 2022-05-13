@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RecipeController : MonoBehaviour
 {
-    public enum INGREDIENTS { NONE, BURGUERBREAD, BURGUERBREADCHEESE, BURGUERBREADLETTUCE, BURGUERBREADTOMATO, BURGUER, 
+    private enum INGREDIENTS { NONE, BURGUERBREAD, BURGUERBREADCHEESE, BURGUERBREADLETTUCE, BURGUERBREADTOMATO, BURGUER, 
         BURGUERCHEESE, BURGUERTOMATO, BURGUERLETTUCE,
         BURGUERCHEESETOMATO, BURGUERCHEESELETTUCE, BURGUERLETTUCETOMATO,
         BURGUERBREADCHEESETOMATO, BURGUERBREADCHEESELETTUCE, BURGUERBREADLETTUCETOMATO, BURGUERVEGETAL,
@@ -13,22 +13,24 @@ public class RecipeController : MonoBehaviour
 
         HOTDOGBREAD, SAUSAGEMEAT, BOTTLEKETCHUP, BOTTLEMUSTARD, RICEBALL, SALMON };
 
-    public List<INGREDIENTS> recipe;
-    public List<GameObject> objectsRecipe;
+    private List<INGREDIENTS> recipe;
+    private List<GameObject> objectsRecipe;
     [SerializeField] List<GameObject> Ingredients;
     private INGREDIENTS lastIngredient;
 
     private Hand RighthandScript;
     private Hand LefthandScript;
 
-    public bool isBurguer;
-    public bool isHotDog;
-    public bool isSushi;
-    public bool isPizza;
+    private bool isBurguer;
+    private bool isHotDog;
+    private bool isSushi;
+    private bool isPizza;
 
+    [Header("Debug")]
     private bool isColliding;
     private bool isTried;
     private bool anIngredientIsIn;
+    private bool isGrabbingInPlate;
 
     private void Awake()
     {
@@ -48,6 +50,7 @@ public class RecipeController : MonoBehaviour
         isColliding = false;
         isTried = false;
         anIngredientIsIn = true;
+        isGrabbingInPlate = false;
     }
 
     // Update is called once per frame
@@ -72,7 +75,7 @@ public class RecipeController : MonoBehaviour
 
     private void CheckIfGrabbing()
     {
-        if (RighthandScript.GetIsGrabing() || LefthandScript.GetIsGrabing())
+        if (RighthandScript.GetIsGrabing() && !isGrabbingInPlate || LefthandScript.GetIsGrabing() && !isGrabbingInPlate)
         {
             anIngredientIsIn = false;
         }
@@ -219,7 +222,7 @@ public class RecipeController : MonoBehaviour
         bool burguerCheeseLettuce = false;
         bool burguerLettuceTomato = false;
         bool burguerVegetal = false;
-        bool burguerWithAll = false;
+        //bool burguerWithAll = false;
 
 
         foreach (var item in recipe)
@@ -271,9 +274,9 @@ public class RecipeController : MonoBehaviour
                 case INGREDIENTS.BURGUERVEGETAL:
                     burguerVegetal = true;
                     break;
-                case INGREDIENTS.BURGUERWITHALL:
-                    burguerWithAll = true;
-                    break;
+                //case INGREDIENTS.BURGUERWITHALL:
+                //    burguerWithAll = true;
+                //    break;
                 case INGREDIENTS.PATTYMEAT:
                     pattyMeat = true;
                     break;
@@ -815,6 +818,11 @@ public class RecipeController : MonoBehaviour
                 default:
                     break;
 
+                // Mano
+                case "Player":
+                    isGrabbingInPlate = true;
+                    break;
+
                 // Burguer
                 case "BurguerBread":
                     if (!CheckIngredient(INGREDIENTS.BURGUERBREAD))
@@ -1283,7 +1291,7 @@ public class RecipeController : MonoBehaviour
                             {
                                 // Hacer la combinacion de ingredientes
                                 AddToObjectRecipe(other.gameObject);
-                                MakeBurguer(INGREDIENTS.BURGUERWITHALL);
+                                //MakeBurguer(INGREDIENTS.BURGUERWITHALL);
                             }
                             isColliding = true;
                         }
@@ -1415,8 +1423,6 @@ public class RecipeController : MonoBehaviour
                     anIngredientIsIn = true;
                     break;
 
-
-
                 // HotDog
                 case "HotDogBread":
 
@@ -1452,6 +1458,10 @@ public class RecipeController : MonoBehaviour
             switch (other.gameObject.tag)
             {
                 default:
+                    break;
+                // Mano
+                case "Player":
+                    isGrabbingInPlate = false;
                     break;
 
                 // Burguer
@@ -1557,8 +1567,6 @@ public class RecipeController : MonoBehaviour
 
                     // Pizza
             }
-
-            Debug.Log("ha salido " + other.gameObject.tag + " del plato");
         }
     }
 
@@ -1605,4 +1613,7 @@ public class RecipeController : MonoBehaviour
         isSushi = false;
         isPizza = true;
     }
+
+
+
 }
