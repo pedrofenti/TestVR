@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class RecipeController : MonoBehaviour
 {
-    private enum INGREDIENTS { NONE, BURGUERBREAD, BURGUERBREADCHEESE, BURGUERBREADLETTUCE, BURGUERBREADTOMATO, BURGUER, 
+    public enum INGREDIENTS { NONE, BURGUERBREAD, BURGUERBREADCHEESE, BURGUERBREADLETTUCE, BURGUERBREADTOMATO, BURGUER, 
         BURGUERCHEESE, BURGUERTOMATO, BURGUERLETTUCE,
         BURGUERCHEESETOMATO, BURGUERCHEESELETTUCE, BURGUERLETTUCETOMATO,
         BURGUERBREADCHEESETOMATO, BURGUERBREADCHEESELETTUCE, BURGUERBREADLETTUCETOMATO, BURGUERVEGETAL,
-        BURGUERWITHALL,
-        CHEESECUT, LETTUCE, PATTYMEAT, TOMATOSLICE, 
+        BURGUERWITHALL, 
+        HOTDOG, HOTDOGSAUCE, HOTDOGKETCHUP, HOTDOGMUSTARD, SAUSAGEKETCHUP, SAUSAGEMUSTARD, SAUSAGESAUCE,
+        CHEESECUT, LETTUCE, PATTYMEAT, TOMATOSLICE,
+        HOTDOGBREAD, SAUSAGEMEAT, BOTTLEKETCHUP, BOTTLEMUSTARD, 
+        RICEBALL, SALMON };
 
-        HOTDOGBREAD, SAUSAGEMEAT, BOTTLEKETCHUP, BOTTLEMUSTARD, RICEBALL, SALMON };
-
-    private List<INGREDIENTS> recipe;
-    private List<GameObject> objectsRecipe;
+    public List<INGREDIENTS> recipe;
+    public List<GameObject> objectsRecipe;
     [SerializeField] List<GameObject> Ingredients;
     private INGREDIENTS lastIngredient;
 
     private Hand RighthandScript;
     private Hand LefthandScript;
 
-    private bool isBurguer;
-    private bool isHotDog;
-    private bool isSushi;
-    private bool isPizza;
+    public bool isBurguer;
+    public bool isHotDog;
+    public bool isSushi;
+    public bool isPizza;
 
     [Header("Debug")]
     private bool isColliding;
     private bool isTried;
     private bool anIngredientIsIn;
-    private bool isGrabbingInPlate;
+    public bool isGrabbingInPlate;
 
     private void Awake()
     {
@@ -168,6 +169,27 @@ public class RecipeController : MonoBehaviour
                 case INGREDIENTS.BOTTLEMUSTARD:
                     IsHotDog();
                     break;
+                case INGREDIENTS.HOTDOG:
+                    IsHotDog();
+                    break;
+                case INGREDIENTS.HOTDOGKETCHUP:
+                    IsHotDog();
+                    break;
+                case INGREDIENTS.HOTDOGMUSTARD:
+                    IsHotDog();
+                    break;
+                case INGREDIENTS.HOTDOGSAUCE:
+                    IsHotDog();
+                    break;
+                case INGREDIENTS.SAUSAGEKETCHUP:
+                    IsHotDog();
+                    break;
+                case INGREDIENTS.SAUSAGEMUSTARD:
+                    IsHotDog();
+                    break;
+                case INGREDIENTS.SAUSAGESAUCE:
+                    IsHotDog();
+                    break;
 
                 // Sushi
                 case INGREDIENTS.RICEBALL:
@@ -178,6 +200,7 @@ public class RecipeController : MonoBehaviour
                     break;
 
                     // Pizza
+
             }
         }
     }
@@ -793,6 +816,273 @@ public class RecipeController : MonoBehaviour
                 objectsRecipe.Add(p);
 
                 UpdateRecipe(INGREDIENTS.BURGUERWITHALL);
+            }
+        }
+    }
+
+    private void MakeHotDog(INGREDIENTS newIngredient)
+    {
+        recipe.Add(newIngredient);
+
+        bool hotDogBread = false;
+        bool sausageMeat = false;
+        bool bottleKetchup = false;
+        bool bottleMustard = false;
+        bool hotDog = false;
+        bool hotDogKetchup = false;
+        bool hotDogMustard = false;
+        bool sausageKetchup = false;
+        bool sausageMustard = false;
+        bool sausageSauce = false;
+
+
+        foreach (var item in recipe)
+        {
+            switch (item)
+            {
+                case INGREDIENTS.HOTDOGBREAD:
+                    hotDogBread = true;
+                    break;
+                case INGREDIENTS.SAUSAGEMEAT:
+                    sausageMeat = true;
+                    break;
+                case INGREDIENTS.BOTTLEKETCHUP:
+                    bottleKetchup = true;
+                    break;
+                case INGREDIENTS.BOTTLEMUSTARD:
+                    bottleMustard = true;
+                    break;
+                case INGREDIENTS.HOTDOG:
+                    hotDog = true;
+                    break;
+                case INGREDIENTS.HOTDOGKETCHUP:
+                    hotDogKetchup = true;
+                    break;
+                case INGREDIENTS.HOTDOGMUSTARD:
+                    hotDogMustard = true;
+                    break;
+                case INGREDIENTS.SAUSAGEKETCHUP:
+                    sausageKetchup = true;
+                    break;
+                case INGREDIENTS.SAUSAGEMUSTARD:
+                    sausageMustard = true;
+                    break;
+                case INGREDIENTS.SAUSAGESAUCE:
+                    sausageSauce = true;
+                    break;
+            }
+        }
+
+        // Comprobar que Ingredientes estan (son true) y hacer las combinaciones instaciando las fusiones
+
+        // Empezar con pan de HotDog
+        if (hotDogBread)
+        {
+            if (sausageMeat)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOG], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOG);
+            }
+        }
+
+        // Empezar con HotDog
+        if (sausageMeat)
+        {
+            if (hotDogBread)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOG], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOG);
+            }
+
+            if (bottleKetchup)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.SAUSAGEKETCHUP], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.SAUSAGEKETCHUP);
+            }
+
+            if (bottleMustard)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.SAUSAGEMUSTARD], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.SAUSAGEMUSTARD);
+            }
+        }
+
+        // Pan y HotDog
+        if (hotDog)
+        {
+            if (bottleKetchup)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOGKETCHUP], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOGKETCHUP);
+            }
+
+            if (bottleMustard)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOGMUSTARD], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOGMUSTARD);
+            }
+        }
+
+        // HotDog y salsa
+        if (sausageKetchup)
+        {
+            if (hotDogBread)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOGKETCHUP], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOGKETCHUP);
+            }
+
+            if (bottleMustard)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.SAUSAGESAUCE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.SAUSAGESAUCE);
+            }
+        }
+
+        if (sausageMustard)
+        {
+            if (hotDogBread)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOGMUSTARD], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOGMUSTARD);
+            }
+
+            if (bottleKetchup)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.SAUSAGESAUCE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.SAUSAGESAUCE);
+            }
+        }
+
+        // HotDog y salsas
+        if (sausageSauce)
+        {
+            if (hotDogBread)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOGSAUCE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOGSAUCE);
+            }
+        }
+
+        if (hotDogKetchup)
+        {
+            if (bottleMustard)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOGSAUCE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOGSAUCE);
+            }
+        }
+
+        if (hotDogMustard)
+        {
+            if (bottleKetchup)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.HOTDOGSAUCE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.HOTDOGSAUCE);
             }
         }
     }
@@ -1425,16 +1715,321 @@ public class RecipeController : MonoBehaviour
 
                 // HotDog
                 case "HotDogBread":
-
+                    if (!CheckIngredient(INGREDIENTS.HOTDOGBREAD))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.HOTDOGBREAD;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.HOTDOGBREAD);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
+
                 case "SausageMeat":
-
+                    if (!CheckIngredient(INGREDIENTS.SAUSAGEMEAT))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.SAUSAGEMEAT;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.SAUSAGEMEAT);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
+
                 case "BottleKetchup":
-
+                    if (!CheckIngredient(INGREDIENTS.BOTTLEKETCHUP))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BOTTLEKETCHUP;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.BOTTLEKETCHUP);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
-                case "BottleMustard":
 
+                case "BottleMustard":
+                    if (!CheckIngredient(INGREDIENTS.BOTTLEMUSTARD))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.BOTTLEMUSTARD;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.BOTTLEMUSTARD);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "HotDog":
+                    if (!CheckIngredient(INGREDIENTS.HOTDOG))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.HOTDOG;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.HOTDOG);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "HotDogKetchup":
+                    if (!CheckIngredient(INGREDIENTS.HOTDOGKETCHUP))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.HOTDOGKETCHUP;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.HOTDOGKETCHUP);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "HotDogMustard":
+                    if (!CheckIngredient(INGREDIENTS.HOTDOGMUSTARD))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.HOTDOGMUSTARD;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.HOTDOGMUSTARD);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "HotDogSauce":
+                    if (!CheckIngredient(INGREDIENTS.HOTDOGSAUCE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.HOTDOGSAUCE;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "SausageKetchup":
+                    if (!CheckIngredient(INGREDIENTS.SAUSAGEKETCHUP))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.SAUSAGEKETCHUP;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.SAUSAGEKETCHUP);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "SausageMustard":
+                    if (!CheckIngredient(INGREDIENTS.SAUSAGEMUSTARD))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.SAUSAGEMUSTARD;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.SAUSAGEMUSTARD);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "SausageSauce":
+                    if (!CheckIngredient(INGREDIENTS.SAUSAGESAUCE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isSushi)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.SAUSAGESAUCE;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeHotDog(INGREDIENTS.SAUSAGESAUCE);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
 
                 // Sushi
@@ -1547,15 +2142,47 @@ public class RecipeController : MonoBehaviour
 
                 // HotDog
                 case "HotDogBread":
+                    ResetBools();
                     break;
 
                 case "SausageMeat":
+                    ResetBools();
                     break;
 
                 case "BottleKetchup":
+                    ResetBools();
                     break;
 
                 case "BottleMustard":
+                    ResetBools();
+                    break;
+
+                case "HotDog":
+                    ResetBools();
+                    break;
+
+                case "HotDogKetchup":
+                    ResetBools();
+                    break;
+                    
+                case "HotDogMustard":
+                    ResetBools();
+                    break;
+
+                case "HotDogSauce":
+                    ResetBools();
+                    break;
+
+                case "SausageKetchup":
+                    ResetBools();
+                    break;
+
+                case "SausageMustard":
+                    ResetBools();
+                    break;
+
+                case "SausageSauce":
+                    ResetBools();
                     break;
 
                 // Sushi

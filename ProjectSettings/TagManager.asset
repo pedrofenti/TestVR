@@ -39,6 +39,13 @@ TagManager:
   - BurguerBreadLettuceTomato
   - BurguerVegetal
   - BurguerWithAll
+  - HotDog
+  - HotDogSauce
+  - HotDogKetchup
+  - HotDogMustard
+  - SausageKetchup
+  - SausageMustard
+  - SausageSauce
   layers:
   - Default
   - TransparentFX
