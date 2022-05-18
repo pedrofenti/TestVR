@@ -10,9 +10,11 @@ public class RecipeController : MonoBehaviour
         BURGUERBREADCHEESETOMATO, BURGUERBREADCHEESELETTUCE, BURGUERBREADLETTUCETOMATO, BURGUERVEGETAL,
         BURGUERWITHALL, 
         HOTDOG, HOTDOGSAUCE, HOTDOGKETCHUP, HOTDOGMUSTARD, SAUSAGEKETCHUP, SAUSAGEMUSTARD, SAUSAGESAUCE,
+        MAKIRICE, MAKISALMON, MAKIROE, SHUSHISALMON,
         CHEESECUT, LETTUCE, PATTYMEAT, TOMATOSLICE,
         HOTDOGBREAD, SAUSAGEMEAT, BOTTLEKETCHUP, BOTTLEMUSTARD, 
-        RICEBALL, SALMON };
+        RICEBALL, SALMON, ALGANORI
+    };
 
     public List<INGREDIENTS> recipe;
     public List<GameObject> objectsRecipe;
@@ -196,6 +198,15 @@ public class RecipeController : MonoBehaviour
                     IsSushi();
                     break;
                 case INGREDIENTS.SALMON:
+                    IsSushi();
+                    break;
+                case INGREDIENTS.ALGANORI:
+                    IsSushi();
+                    break;
+                case INGREDIENTS.MAKIROE:
+                    IsSushi();
+                    break;
+                case INGREDIENTS.SHUSHISALMON:
                     IsSushi();
                     break;
 
@@ -1083,6 +1094,192 @@ public class RecipeController : MonoBehaviour
                 objectsRecipe.Add(p);
 
                 UpdateRecipe(INGREDIENTS.HOTDOGSAUCE);
+            }
+        }
+    }
+
+    private void MakeShushi(INGREDIENTS newIngredient)
+    {
+        recipe.Add(newIngredient);
+
+        bool salmon = false;
+        bool rice = false;
+        bool algaNori = false;
+        bool makiRice = false;
+        bool makiSalmon = false;
+        bool shushiSalmon = false;
+
+
+        foreach (var item in recipe)
+        {
+            switch (item)
+            {
+                case INGREDIENTS.SALMON:
+                    salmon = true;
+                    break;
+                case INGREDIENTS.RICEBALL:
+                    rice = true;
+                    break;
+                case INGREDIENTS.ALGANORI:
+                    algaNori = true;
+                    break;
+                case INGREDIENTS.SHUSHISALMON:
+                    shushiSalmon = true;
+                    break;
+                case INGREDIENTS.MAKIRICE:
+                    makiRice = true;
+                    break;
+                case INGREDIENTS.MAKISALMON:
+                    makiSalmon = true;
+                    break;
+            }
+        }
+
+        // Comprobar que Ingredientes estan (son true) y hacer las combinaciones instaciando las fusiones
+
+        // Empezar con simples
+        if (rice)
+        {
+            if (salmon)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.SHUSHISALMON], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.SHUSHISALMON);
+            }
+
+            if (algaNori)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.MAKIRICE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.MAKIRICE);
+            }
+        }
+    
+        if (salmon)
+        {
+            if (rice)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.SHUSHISALMON], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.SHUSHISALMON);
+            }
+
+            if (algaNori)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.MAKISALMON], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.MAKISALMON);
+            }
+        }
+
+        if (algaNori)
+        {
+            if (rice)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.MAKIRICE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.MAKIRICE);
+            }
+
+            if (salmon)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.MAKISALMON], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.MAKISALMON);
+            }
+        }
+
+        // Dobletes
+        if (makiSalmon)
+        {
+            if (rice)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.MAKIROE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.MAKIROE);
+            }
+        }
+
+        if (makiRice)
+        {
+            if (salmon)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.MAKIROE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.MAKIROE);
+            }
+        }
+
+        if (shushiSalmon)
+        {
+            if (algaNori)
+            {
+                foreach (var item in objectsRecipe)
+                {
+                    Destroy(item);
+                }
+                objectsRecipe.Clear();
+
+                GameObject p = Instantiate(Ingredients[(int)INGREDIENTS.MAKIROE], transform.position, transform.rotation);
+                objectsRecipe.Add(p);
+
+                UpdateRecipe(INGREDIENTS.MAKIROE);
             }
         }
     }
@@ -2034,10 +2231,206 @@ public class RecipeController : MonoBehaviour
 
                 // Sushi
                 case "RiceBall":
-
+                    if (!CheckIngredient(INGREDIENTS.RICEBALL))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isHotDog)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.RICEBALL;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeShushi(INGREDIENTS.RICEBALL);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
-                case "Salmon":
 
+                case "Salmon":
+                    if (!CheckIngredient(INGREDIENTS.SALMON))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isHotDog)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.SALMON;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeShushi(INGREDIENTS.SALMON);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "AlgaNori":
+                    if (!CheckIngredient(INGREDIENTS.ALGANORI))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isHotDog)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.ALGANORI;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeShushi(INGREDIENTS.ALGANORI);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "MakiSalmon":
+                    if (!CheckIngredient(INGREDIENTS.MAKISALMON))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isHotDog)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.MAKISALMON;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeShushi(INGREDIENTS.MAKISALMON);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "MakiRice":
+                    if (!CheckIngredient(INGREDIENTS.MAKIRICE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isHotDog)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.MAKIRICE;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeShushi(INGREDIENTS.MAKIRICE);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "MakiRoe":
+                    if (!CheckIngredient(INGREDIENTS.MAKIROE))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isHotDog)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.MAKIROE;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeShushi(INGREDIENTS.MAKIROE);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
+                    break;
+
+                case "ShushiSalmon":
+                    if (!CheckIngredient(INGREDIENTS.SHUSHISALMON))
+                    {
+                        // No esta este ingrediente en el plato
+                        // Compruebo que no se esta haciendo otra receta
+                        if (!isBurguer && !isPizza && !isHotDog)
+                        {
+                            // Lo añado al array
+                            if (CheckFirstIngredientIsNotNONE())
+                            {
+                                recipe[0] = INGREDIENTS.SHUSHISALMON;
+                                AddToObjectRecipe(other.gameObject);
+                            }
+                            else
+                            {
+                                // Hacer la combinacion de ingredientes
+                                AddToObjectRecipe(other.gameObject);
+                                MakeShushi(INGREDIENTS.SHUSHISALMON);
+                            }
+                            isColliding = true;
+                        }
+                    }
+                    else
+                    {
+                        isColliding = false;
+                    }
+                    anIngredientIsIn = true;
                     break;
 
                     // Pizza
@@ -2187,9 +2580,31 @@ public class RecipeController : MonoBehaviour
 
                 // Sushi
                 case "RiceBall":
+                    ResetBools();
                     break;
 
                 case "Salmon":
+                    ResetBools();
+                    break;
+
+                case "AlgaNori":
+                    ResetBools();
+                    break;
+
+                case "MakiSalmon":
+                    ResetBools();
+                    break;
+
+                case "MakiRice":
+                    ResetBools();
+                    break;
+
+                case "MakiRoe":
+                    ResetBools();
+                    break;
+
+                case "ShushiSalmon":
+                    ResetBools();
                     break;
 
                     // Pizza
@@ -2240,7 +2655,5 @@ public class RecipeController : MonoBehaviour
         isSushi = false;
         isPizza = true;
     }
-
-
 
 }

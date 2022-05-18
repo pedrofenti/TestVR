@@ -429,7 +429,12 @@ MonoBehaviour:
   - {fileID: 8930438612446232309, guid: 484fab9c4e345104e9de5f65dfbe55fe, type: 3}
   - {fileID: 8930438612446232309, guid: 7bb6174e1c5e0564aba23962d2ff732a, type: 3}
   - {fileID: 8930438612446232309, guid: 1fd1627e82294354583807ebaa83d379, type: 3}
+  - {fileID: 8636867152874730323, guid: ff76c0119a812b5498603869ba2ab467, type: 3}
+  - {fileID: 8636867152874730323, guid: cdcce3eb0b80fab4bb8f0016a38f1754, type: 3}
+  - {fileID: 8636867152874730323, guid: 396794c8c3e0a0e44890615daf88caa9, type: 3}
+  - {fileID: 6451695564540370739, guid: 4b26b99d8a0aab6499724ebaed210c0d, type: 3}
   isBurguer: 0
   isHotDog: 0
   isSushi: 0
   isPizza: 0
+  isGrabbingInPlate: 0

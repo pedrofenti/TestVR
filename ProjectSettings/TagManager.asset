@@ -46,6 +46,11 @@ TagManager:
   - SausageKetchup
   - SausageMustard
   - SausageSauce
+  - AlgaNori
+  - MakiRice
+  - MakiRoe
+  - MakiSalmon
+  - SushiSalmon
   layers:
   - Default
   - TransparentFX
