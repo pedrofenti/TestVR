@@ -206,6 +206,12 @@ public class RecipeController : MonoBehaviour
                 case INGREDIENTS.MAKIROE:
                     IsSushi();
                     break;
+                case INGREDIENTS.MAKIRICE:
+                    IsSushi();
+                    break;
+                case INGREDIENTS.MAKISALMON:
+                    IsSushi();
+                    break;
                 case INGREDIENTS.SHUSHISALMON:
                     IsSushi();
                     break;
