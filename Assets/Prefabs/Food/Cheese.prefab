@@ -2422,7 +2422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7415355005284626081}
   m_LocalRotation: {x: -4.3297806e-17, y: 0.9659259, z: 4.3297806e-17, w: -0.25881907}
-  m_LocalPosition: {x: -3.609557e-15, y: 0, z: -2.8876459e-15}
+  m_LocalPosition: {x: 0, y: 0, z: -3.2480874e-15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2218553329697601173}
@@ -3550,6 +3550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FoodCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5130952770883005327, guid: 6c00a462ede465b48bfb4b9cfe516489,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5894051513729432121, guid: 6c00a462ede465b48bfb4b9cfe516489,
         type: 3}

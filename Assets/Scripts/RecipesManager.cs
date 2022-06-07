@@ -56,17 +56,19 @@ public class RecipesManager : MonoBehaviour
     {
         canGetANewRecipe = false;
         System.Random time = new System.Random();
-        int finaltimer = time.Next(0, maxTimer++);
+        int finaltimer = time.Next(3, maxTimer++);
         yield return new WaitForSeconds(finaltimer);
 
         switch (recipe)
         {
             case 0: // Burguers
                 {
+
                     System.Random random = new System.Random();
                     Array values = Enum.GetValues(typeof(BURGERRECIPES));
                     BURGERRECIPES randomBar = (BURGERRECIPES)values.GetValue(random.Next(values.Length));
-                    BurguerList.Add(randomBar);
+                    //BurguerList.Add(randomBar);
+                    BurguerList.Add(BURGERRECIPES.BURGUERCHEESE);
                     canGetANewRecipe = true;
                     break;
                 }
@@ -96,36 +98,47 @@ public class RecipesManager : MonoBehaviour
         }
     }
 
-    public List<BURGERRECIPES> GetBurguerList()
+    public bool GetIfCanGetANewRecipe()
     {
-        return BurguerList;
+        return canGetANewRecipe;
     }
 
-    public List<HOTDOGRECIPES> GetHotdogList()
+    public int GetBurguerList()
     {
-        return HotdogList;
+        if (BurguerList.Count > 0)
+            return (int)BurguerList[BurguerList.Count - 1];
+        else return 0;
     }
 
-    public List<SUSHIRECIPES> GetSushiList()
+    public int GetHotdogList()
     {
-        return SushiList;
+        if (HotdogList.Count > 0)
+            return (int)HotdogList[HotdogList.Count - 1];
+        else return 0;
     }
 
-    public bool GetWichRecipe()
+    public int GetSushiList()
+    {
+        if (SushiList.Count > 0)
+            return (int)SushiList[SushiList.Count - 1];
+        else return 0;
+    }
+
+    public int GetWichRecipe()
     {
         if (BurguerLevel)
         {
-            return BurguerLevel;
+            return burguer;
         }
         else if (HotdogLevel)
         {
-            return HotdogLevel;
+            return hotdog;
         }
         else if (SushiLevel)
         {
-            return SushiLevel;
+            return sushi;
         }
 
-        return true;
+        return -1;
     }
 }

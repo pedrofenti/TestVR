@@ -458,6 +458,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FoodCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5130952770883005327, guid: 6c00a462ede465b48bfb4b9cfe516489,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5894051513729432121, guid: 6c00a462ede465b48bfb4b9cfe516489,
         type: 3}
       propertyPath: m_AnchorMax.y
