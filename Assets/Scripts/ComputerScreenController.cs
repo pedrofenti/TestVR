@@ -22,7 +22,8 @@ public class ComputerScreenController : MonoBehaviour
     }
 
     [SerializeField] RecipesManager recipesManager;
-
+    [SerializeField] Transform content;
+ 
     [Header("Burguers")]
     [SerializeField] GameObject[] BurguerOptions;
 
@@ -89,6 +90,17 @@ public class ComputerScreenController : MonoBehaviour
 
     private void ManageRecipeOption(int recipe)
     {
+        if (BurguerLevel)
+        {
+            Instantiate(BurguerOptions[recipe], content);
+        }
+        else if (HotdogLevel)
+        {
 
+        }
+        else if (SushiLevel)
+        {
+
+        }
     }
 }

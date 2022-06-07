@@ -33,7 +33,8 @@ public class RecipesManager : MonoBehaviour
     private int hotdog = 1;
     private int sushi = 2;
     private bool canGetANewRecipe = true;
-    private int maxTimer = 3;
+    private int minTimer = 6;
+    private int maxTimer = 6;
 
     // Update is called once per frame
     void Update()
@@ -56,7 +57,7 @@ public class RecipesManager : MonoBehaviour
     {
         canGetANewRecipe = false;
         System.Random time = new System.Random();
-        int finaltimer = time.Next(3, maxTimer++);
+        int finaltimer = time.Next(minTimer, maxTimer++);
         yield return new WaitForSeconds(finaltimer);
 
         switch (recipe)
@@ -67,8 +68,7 @@ public class RecipesManager : MonoBehaviour
                     System.Random random = new System.Random();
                     Array values = Enum.GetValues(typeof(BURGERRECIPES));
                     BURGERRECIPES randomBar = (BURGERRECIPES)values.GetValue(random.Next(values.Length));
-                    //BurguerList.Add(randomBar);
-                    BurguerList.Add(BURGERRECIPES.BURGUERCHEESE);
+                    BurguerList.Add(randomBar);
                     canGetANewRecipe = true;
                     break;
                 }
