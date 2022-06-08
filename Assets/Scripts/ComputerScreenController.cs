@@ -21,6 +21,8 @@ public class ComputerScreenController : MonoBehaviour
         MAKIRICE, MAKISALMON, MAKIROE, SHUSHISALMON
     }
 
+    public List<GameObject> actualRecipesList;
+
     [SerializeField] RecipesManager recipesManager;
     [SerializeField] Transform content;
  
@@ -96,11 +98,11 @@ public class ComputerScreenController : MonoBehaviour
         }
         else if (HotdogLevel)
         {
-
+            Instantiate(HotdogOptions[recipe], content);
         }
         else if (SushiLevel)
         {
-
+            Instantiate(SushiOptions[recipe], content);
         }
     }
 }

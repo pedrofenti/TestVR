@@ -1311,6 +1311,13 @@ public class RecipeController : MonoBehaviour
                 default:
                     break;
 
+                // OrdersKitchen
+                case "Finish":
+                    // Check if the recipe is on demands then Accept it and win points
+                    // If the recipe is not on demands Substract points
+
+                    break;
+
                 // Mano
                 case "Player":
                     isGrabbingInPlate = true;
