@@ -5,12 +5,22 @@ using UnityEngine.UI;
 
 public class RecipeCanvasController : MonoBehaviour
 {
-    [SerializeField] Image timer; //esto es la imagen
+    [SerializeField] int list;
+    [SerializeField] string objectName;
+    [SerializeField] int objectNum;
+    [SerializeField] Image timer; 
     [SerializeField] float spendTime;
     private float counter = 1;
 
     private float colorCounter = 1;
     private float colorSpendTime = 15;
+
+    private RecipesManager recipesManager;
+
+    private void Awake()
+    {
+        recipesManager = FindObjectOfType<RecipesManager>().GetComponent<RecipesManager>();
+    }
 
     void Update()
     {
@@ -20,8 +30,8 @@ public class RecipeCanvasController : MonoBehaviour
         timer.fillAmount = Mathf.Lerp(0, 1, counter);
         if (timer.fillAmount <= 0)
         {
-            PointsManager._POINTS_MANAGER.SubstractPoints(PointsManager._POINTS_MANAGER.failedRecipePoints);
-            //quitarlo de la lista
+            PointsManager._POINTS_MANAGER.SubstractPoints(PointsManager._POINTS_MANAGER.outOfTimeRecipePoints);
+            recipesManager.RemoveGameObjectFromList(list, objectName, objectNum);
             Destroy(gameObject);
         }
 
@@ -37,4 +47,8 @@ public class RecipeCanvasController : MonoBehaviour
             colorCounter -= Time.deltaTime / colorSpendTime;
         } 
     }
+
+    public float GetTimerFillAmount() { return timer.fillAmount; }
+
+    public void DestroyObject() { Destroy(gameObject); }
 }

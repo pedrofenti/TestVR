@@ -7,7 +7,8 @@ public class PointsManager : MonoBehaviour
     public static PointsManager _POINTS_MANAGER;
 
     public int points = 0;
-    public int failedRecipePoints = 75;
+    public int failedRecipePoints = 50;
+    public int outOfTimeRecipePoints = 75;
     public int perfectRecipePoints = 150;
     public int mediumRecipePoints = 100;
     public int chillRecipePoints = 50;
@@ -30,8 +31,19 @@ public class PointsManager : MonoBehaviour
         points -= value;
     }
 
-    public void ScorePoints(int value)
+    public void ScorePoints(float value)
     {
-        points += value;
+        if (value > 0.6f)
+        {
+            points += perfectRecipePoints;
+        }
+        else if(value < 0.6f && value > 0.3f)
+        {
+            points += mediumRecipePoints;
+        }
+        else if (value < 0.3f)
+        {
+            points += chillRecipePoints;
+        }
     }
 }

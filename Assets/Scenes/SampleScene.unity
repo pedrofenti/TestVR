@@ -1300,9 +1300,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8305b1706533944c980622e641c7745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BurguerList: 
+  HotdogList: 
+  SushiList: 
+  ObjectBurguerList: []
+  ObjectHotdogList: []
+  ObjectSushiList: []
   BurguerLevel: 1
   HotdogLevel: 0
   SushiLevel: 0
+  BurguerRecipes:
+  - {fileID: 924651289367191073, guid: 489cad0f3aa055b48b0ead7db5605dcc, type: 3}
+  - {fileID: 5037243149144735889, guid: 2afef3b40b2d118489450bdf48385794, type: 3}
+  - {fileID: 6683129795792359614, guid: ff44f87423c30bb42aac827fb1dcb028, type: 3}
+  - {fileID: 6683129795792359614, guid: 3c132ba353c3d524ba31387df8b4cb8c, type: 3}
+  - {fileID: 612468787953790231, guid: 242855f7b7f948540bb43e931f607f77, type: 3}
+  - {fileID: 6683129795792359614, guid: 676b1f89ed184cb499120bf73d49f450, type: 3}
+  - {fileID: 6683129795792359614, guid: 760dc2215aa9d494a86ec02250a24e4a, type: 3}
+  - {fileID: 6683129795792359614, guid: 588bc0237df5fc44193bdae3c19bfc16, type: 3}
+  HotdogRecipes:
+  - {fileID: 2290543677808614439, guid: 43515839ead609b49be7ebcc11624435, type: 3}
+  - {fileID: 8930438612446232309, guid: 02c67fc451a4fbf4db0d085978e5685f, type: 3}
+  - {fileID: 8930438612446232309, guid: 510b7ce69df77cf458ce91596ddedaca, type: 3}
+  - {fileID: 8930438612446232309, guid: 425e4f04784df1d4a8f814a53ce998b8, type: 3}
+  SushiRecipes:
+  - {fileID: 8636867152874730323, guid: ff76c0119a812b5498603869ba2ab467, type: 3}
+  - {fileID: 8636867152874730323, guid: cdcce3eb0b80fab4bb8f0016a38f1754, type: 3}
+  - {fileID: 8636867152874730323, guid: 396794c8c3e0a0e44890615daf88caa9, type: 3}
+  - {fileID: 6451695564540370739, guid: 4b26b99d8a0aab6499724ebaed210c0d, type: 3}
 --- !u!1001 &678516701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1809,12 +1834,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3727397079280443482, guid: cb8a2a613d780ae4bbdc3914da5e7e61,
     type: 3}
   m_PrefabInstance: {fileID: 861352413}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &877007989 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1390595743487092698, guid: ea193be706b2b854891a83ce065a345b,
-    type: 3}
-  m_PrefabInstance: {fileID: 7603447223481965358}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &899850323 stripped
 Transform:
@@ -3537,6 +3556,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1859981755}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1936772274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7603447223481965358}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd76c53d31ccbac469aeae9b9ba86339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1939028037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4477,6 +4508,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2095466221}
     m_Modifications:
+    - target: {fileID: 952499827512161292, guid: b6d04a282968add4aa8483590d7cc2a2,
+        type: 3}
+      propertyPath: recipeManager
+      value: 
+      objectReference: {fileID: 659551616}
+    - target: {fileID: 952499827512161292, guid: b6d04a282968add4aa8483590d7cc2a2,
+        type: 3}
+      propertyPath: computerScreenController
+      value: 
+      objectReference: {fileID: 1936772274}
     - target: {fileID: 7473596566680545332, guid: b6d04a282968add4aa8483590d7cc2a2,
         type: 3}
       propertyPath: m_RootOrder
@@ -4485,7 +4526,7 @@ PrefabInstance:
     - target: {fileID: 7473596566680545332, guid: b6d04a282968add4aa8483590d7cc2a2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.33
+      value: 7.083
       objectReference: {fileID: 0}
     - target: {fileID: 7473596566680545332, guid: b6d04a282968add4aa8483590d7cc2a2,
         type: 3}
@@ -4495,7 +4536,7 @@ PrefabInstance:
     - target: {fileID: 7473596566680545332, guid: b6d04a282968add4aa8483590d7cc2a2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.86
+      value: 3.372
       objectReference: {fileID: 0}
     - target: {fileID: 7473596566680545332, guid: b6d04a282968add4aa8483590d7cc2a2,
         type: 3}
@@ -4906,11 +4947,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5266670070251517530, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: m_Spacing.y
-      value: 3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5651381007852673312, guid: ea193be706b2b854891a83ce065a345b,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5283,77 +5319,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
         type: 3}
-      propertyPath: content
-      value: 
-      objectReference: {fileID: 877007989}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
       propertyPath: recipesManager
       value: 
       objectReference: {fileID: 659551616}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: SushiOptions.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: HotdogOptions.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.data[0]
-      value: 
-      objectReference: {fileID: 227019342013419442, guid: 2eaf6c2b437dee341843d2ee9905769d,
-        type: 3}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.data[1]
-      value: 
-      objectReference: {fileID: 227019342013419442, guid: a2b90762b39d83a4c856fdf7c8d534ab,
-        type: 3}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.data[2]
-      value: 
-      objectReference: {fileID: 227019342013419442, guid: 9c04866c394275544a3088b0c09104cc,
-        type: 3}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.data[3]
-      value: 
-      objectReference: {fileID: 227019342013419442, guid: 8af2e38a105ad9a47bd83751e28c82a3,
-        type: 3}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.data[4]
-      value: 
-      objectReference: {fileID: 227019342013419442, guid: 360cae2e571b65e4d8a0c6b2420a61e3,
-        type: 3}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.data[5]
-      value: 
-      objectReference: {fileID: 227019342013419442, guid: d8d6dfa5fda93c147b5c1c80213b1252,
-        type: 3}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.data[6]
-      value: 
-      objectReference: {fileID: 227019342013419442, guid: ba93ac5c4d246b3439282c391764a2df,
-        type: 3}
-    - target: {fileID: 8911964467924191941, guid: ea193be706b2b854891a83ce065a345b,
-        type: 3}
-      propertyPath: BurguerOptions.Array.data[7]
-      value: 
-      objectReference: {fileID: 227019342013419442, guid: 4739bcb30e0b2244e9deafa3b73691a6,
-        type: 3}
     - target: {fileID: 8914621498811329088, guid: ea193be706b2b854891a83ce065a345b,
         type: 3}
       propertyPath: m_AnchorMax.y

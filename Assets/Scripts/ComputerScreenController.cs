@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class ComputerScreenController : MonoBehaviour
 {
-    public enum BURGERRECIPES
+    private enum BURGERRECIPES
     {
         BURGUER, BURGUERCHEESE, BURGUERTOMATO, BURGUERLETTUCE,
         BURGUERCHEESETOMATO, BURGUERCHEESELETTUCE, BURGUERLETTUCETOMATO, BURGUERWITHALL
     }
 
-    public enum HOTDOGRECIPES
+    private enum HOTDOGRECIPES
     {
         HOTDOG, HOTDOGSAUCE, HOTDOGKETCHUP, HOTDOGMUSTARD
     }
 
-    public enum SUSHIRECIPES
+    private enum SUSHIRECIPES
     {
         MAKIRICE, MAKISALMON, MAKIROE, SHUSHISALMON
     }
@@ -94,15 +94,44 @@ public class ComputerScreenController : MonoBehaviour
     {
         if (BurguerLevel)
         {
-            Instantiate(BurguerOptions[recipe], content);
+            GameObject obj = Instantiate(BurguerOptions[recipe], content);
+            actualRecipesList.Add(obj);
         }
         else if (HotdogLevel)
         {
-            Instantiate(HotdogOptions[recipe], content);
+            GameObject obj = Instantiate(HotdogOptions[recipe], content);
+            actualRecipesList.Add(obj);
         }
         else if (SushiLevel)
         {
-            Instantiate(SushiOptions[recipe], content);
+            GameObject obj = Instantiate(SushiOptions[recipe], content);
+            actualRecipesList.Add(obj);
+        }
+    }
+
+    public float GetFillAmountFromAnObject(GameObject obj)
+    {
+        foreach (var item in actualRecipesList)
+        {
+            if (item.tag == obj.tag)
+            {
+                return item.GetComponent<RecipeCanvasController>().GetTimerFillAmount();
+            }
+        }
+
+        // Should never do this
+        return 0f;
+    }
+
+    public void DestoyRecipeFromList(GameObject recipe)
+    {
+        foreach (var item in actualRecipesList)
+        {
+            if (item.tag == recipe.tag)
+            {
+                Destroy(item);
+                actualRecipesList.Remove(item);
+            }
         }
     }
 }

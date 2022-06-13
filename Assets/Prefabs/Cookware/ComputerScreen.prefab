@@ -543,4 +543,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd76c53d31ccbac469aeae9b9ba86339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualRecipesList: []
   recipesManager: {fileID: 0}
+  content: {fileID: 1390595743487092698}
+  BurguerOptions:
+  - {fileID: 227019342013419442, guid: 2eaf6c2b437dee341843d2ee9905769d, type: 3}
+  - {fileID: 227019342013419442, guid: a2b90762b39d83a4c856fdf7c8d534ab, type: 3}
+  - {fileID: 227019342013419442, guid: 9c04866c394275544a3088b0c09104cc, type: 3}
+  - {fileID: 227019342013419442, guid: 8af2e38a105ad9a47bd83751e28c82a3, type: 3}
+  - {fileID: 227019342013419442, guid: 360cae2e571b65e4d8a0c6b2420a61e3, type: 3}
+  - {fileID: 227019342013419442, guid: d8d6dfa5fda93c147b5c1c80213b1252, type: 3}
+  - {fileID: 227019342013419442, guid: ba93ac5c4d246b3439282c391764a2df, type: 3}
+  - {fileID: 227019342013419442, guid: 4739bcb30e0b2244e9deafa3b73691a6, type: 3}
+  HotdogOptions:
+  - {fileID: 2290543677808614439, guid: 43515839ead609b49be7ebcc11624435, type: 3}
+  - {fileID: 8930438612446232309, guid: 02c67fc451a4fbf4db0d085978e5685f, type: 3}
+  - {fileID: 8930438612446232309, guid: 510b7ce69df77cf458ce91596ddedaca, type: 3}
+  - {fileID: 8930438612446232309, guid: 425e4f04784df1d4a8f814a53ce998b8, type: 3}
+  SushiOptions:
+  - {fileID: 8636867152874730323, guid: ff76c0119a812b5498603869ba2ab467, type: 3}
+  - {fileID: 8636867152874730323, guid: cdcce3eb0b80fab4bb8f0016a38f1754, type: 3}
+  - {fileID: 8636867152874730323, guid: 396794c8c3e0a0e44890615daf88caa9, type: 3}
+  - {fileID: 6451695564540370739, guid: 4b26b99d8a0aab6499724ebaed210c0d, type: 3}

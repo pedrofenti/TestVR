@@ -33,7 +33,7 @@ public class RecipeController : MonoBehaviour
     private bool isColliding;
     private bool isTried;
     private bool anIngredientIsIn;
-    public bool isGrabbingInPlate;
+    private bool isGrabbingInPlate;
 
     private void Awake()
     {
@@ -219,6 +219,19 @@ public class RecipeController : MonoBehaviour
                     // Pizza
 
             }
+        }
+    }
+
+    public GameObject GetObjectRecipe()
+    {
+        return objectsRecipe[0];
+    }
+
+    public void DestroyRecipe()
+    {
+        foreach (var item in objectsRecipe)
+        {
+            Destroy(item);
         }
     }
 

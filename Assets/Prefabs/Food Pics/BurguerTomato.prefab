@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3453871261113720383}
   m_Layer: 0
   m_Name: BurguerTomato
-  m_TagString: Untagged
+  m_TagString: BurguerTomato
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,6 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf2279f04081fe4ea19fa25f93e47a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  list: 1
+  objectName: BurguerTomato
+  objectNum: 2
   timer: {fileID: 227019343783110653}
   spendTime: 30
 --- !u!1 &227019342912577366
