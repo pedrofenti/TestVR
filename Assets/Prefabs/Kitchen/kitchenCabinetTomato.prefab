@@ -219,8 +219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.872, y: 1.381}
-  m_SizeDelta: {x: 0.667, y: 0.476}
+  m_AnchoredPosition: {x: 1.9, y: 1.25}
+  m_SizeDelta: {x: 0.55, y: 0.45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6344606841943956124
 Canvas:
@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 6250077416221078867}
   - component: {fileID: 4230335392234686704}
   m_Layer: 0
-  m_Name: kitchenCabinet
+  m_Name: kitchenCabinetTomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
