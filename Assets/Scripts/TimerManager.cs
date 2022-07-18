@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
@@ -9,6 +10,9 @@ public class TimerManager : MonoBehaviour
     [Tooltip("timeRemaining are in Seconds. So 600 seconds are 10 minutes")]
     public float timeRemaining = 600;
     private bool timerIsRunning = false;
+
+    [Header("Game Over Canvas")]
+    [SerializeField] GameObject GameOverCanvas;
 
     private void Start()
     {
@@ -30,6 +34,10 @@ public class TimerManager : MonoBehaviour
                 timerIsRunning = false;
             }
         }
+        else
+        {
+            StartCoroutine(GameIsOver());
+        }
     }
 
     void DisplayTime(float timeToDisplay)
@@ -38,5 +46,12 @@ public class TimerManager : MonoBehaviour
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    IEnumerator GameIsOver()
+    {
+        GameOverCanvas.SetActive(true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("PointsScene");
     }
 }

@@ -46,4 +46,9 @@ public class PointsManager : MonoBehaviour
             points += chillRecipePoints;
         }
     }
+
+    public int GetPoints()
+    {
+        return points;
+    }
 }
