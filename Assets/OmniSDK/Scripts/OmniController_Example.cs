@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine.XR;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 /*
 
@@ -74,5 +76,21 @@ public class OmniController_Example : MonoBehaviour {
             m_CharacterController.Move(MovementComponent.GetForwardMovement());
         if (MovementComponent.GetStrafeMovement() != Vector3.zero)
             m_CharacterController.Move(MovementComponent.GetStrafeMovement());
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "Exit")
+        {
+            
+                Debug.Log("hola");
+                Application.Quit();
+            
+        }
+
+        else if(hit.gameObject.tag == "Start")
+        {
+            SceneManager.LoadScene("BurguerScene");
+        }
     }
 }

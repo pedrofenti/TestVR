@@ -51,6 +51,8 @@ TagManager:
   - MakiRoe
   - MakiSalmon
   - SushiSalmon
+  - Exit
+  - Start
   layers:
   - Default
   - TransparentFX
@@ -59,8 +61,8 @@ TagManager:
   - Water
   - UI
   - PrimaryFood
-  - 
-  - 
+  - Player
+  - Scenario
   - 
   - 
   - 
