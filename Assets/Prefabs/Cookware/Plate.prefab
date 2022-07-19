@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3635723509146004650}
   m_Layer: 0
   m_Name: Plate
-  m_TagString: Plate
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -437,4 +437,3 @@ MonoBehaviour:
   isHotDog: 0
   isSushi: 0
   isPizza: 0
-  isGrabbingInPlate: 0

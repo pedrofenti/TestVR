@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 362291631638217432}
   - component: {fileID: 362291631638217433}
   m_Layer: 0
-  m_Name: 50_VFX
+  m_Name: 50_Scored_VFX 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

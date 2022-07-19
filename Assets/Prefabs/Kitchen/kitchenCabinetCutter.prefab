@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9024100263605337007}
   - component: {fileID: 6546259312206188389}
   - component: {fileID: 6250077416221078867}
+  - component: {fileID: 7850832288052867857}
   m_Layer: 0
   m_Name: kitchenCabinetCutter
   m_TagString: Untagged
@@ -31,6 +32,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 7612860313792610029}
+  - {fileID: 1746581066225259117}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,6 +100,83 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2268591647931027947, guid: 30164ea16fa50c649a893a8d44698920, type: 3}
+--- !u!114 &7850832288052867857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744542590107070128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9f4af743853864d846087c709ceef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredient: {fileID: 3635723509146004648, guid: cb01b55a5f6816e4483e86783c5fb76e,
+    type: 3}
+  sockets:
+  - {fileID: 4967802122211638028}
+--- !u!1 &4967802122211638028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1746581066225259117}
+  - component: {fileID: 1879850036278647472}
+  - component: {fileID: 2015634849750533343}
+  m_Layer: 0
+  m_Name: Socket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1746581066225259117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967802122211638028}
+  m_LocalRotation: {x: -0, y: -0.0000005215405, z: -0, w: -1}
+  m_LocalPosition: {x: 2.111002, y: 4.487, z: 2.283}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5373868533278798858}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1879850036278647472
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967802122211638028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1924286, y: 0.64431196, z: 3.948581}
+  m_Center: {x: -0.007226914, y: -0.4, z: -0.1757677}
+--- !u!114 &2015634849750533343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967802122211638028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6e29c83c1037747ae803227dd0d583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientsSpawner: {fileID: 7850832288052867857}
+  ingredient: {fileID: 3635723509146004648, guid: cb01b55a5f6816e4483e86783c5fb76e,
+    type: 3}
+  socketNum: 0
 --- !u!1 &8104430965581071234
 GameObject:
   m_ObjectHideFlags: 0
