@@ -28,7 +28,8 @@ public class GameOverCanvasController : MonoBehaviour
 
         text.text = timeRemaining;
 
-        if (timeRemaining == "0" && changeToLevel!) Destroy(gameObject);
-        else SceneManager.LoadScene(LevelName);
+        if (timeRemaining == "0") 
+            if (changeToLevel == false) Destroy(gameObject);
+            else SceneManager.LoadScene(LevelName);
     }
 }
